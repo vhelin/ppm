@@ -1,0 +1,504 @@
+
+ppm - yet another tile/map editor for gtk written by ville
+helin <vhelin@cc.hut.fi> in 2000-2003. ppm is totally free.
+
+
+
+about the name...
+
+initially i had a good name of which ppm is an acronym. the next day
+i had started project ppm i couldn't remember it anymore, but until
+the day i recall the full name the program is still called ppm. ;)
+
+
+about the requirements...
+
+to compile ppm you'll need a good c-compiler (like gcc), gtk,
+zlib and libpng. ppm compiles like a dream under redhat 9.0,
+but should even compile under windows as there seems to be a port
+of gtk for it as well. if you want to port ppm to a platform of
+your like please send me the alternations and makefiles. i even
+managed to compile ppm under univ's irix, and thanks to ben
+campbell it compiles under windows as well (just remember to
+define WIN32). ;)
+
+ppm requires quite a big screen to be usable. that's because my
+resolution is 1600x1200 and i'm not going to shrink it. you can
+always edit the sources if you need smaller windows.
+
+
+about the functionality...
+
+ppm is gpl software. if you want new features, please feel free to
+code them yourself. i've provided you with the core code. currently,
+i'm writing ppm for myself, to fulfill my needs and requirements.
+project ppm was lauched because there were no usable tile editors
+for linux. if you make any enhancements, please send them to me,
+and better still, before you code anything, contact me.
+
+the need for a new tile editor rised as i was about to start to
+write a small game for game boy, but god damn i didn't want to boot
+to windows to draw the graphics for it. i use linux after all...
+
+
+about the usage...
+
+you should be able to use the editor without any documents. if not,
+please feel free to write one. all three mouse buttons draw with their
+own color, tiles use palettes (in CGB mode), ppm has 4/8/12/16KB of
+graphics memory for tiles, you can export part of the memory, etc...
+
+here are the key shortcuts for edit and memory windows:
+
+x - flip x
+y - flip y
+u - shift up
+d - shift down
+l - shift left
+r - shift right
+cursor left  - move to the block on the left
+cursor right - move to the block on the right
+cursor up    - move to the block above
+cursow down  - move to the block below
+
+
+about drawing...
+
+you can paint pixels with all the three mouse buttons you have. you can
+also flood fill by holding shift down and clicking a pixel. that's the
+two drawing modes in ppm at the moment.
+
+
+about map editing...
+
+the left mouse button moves the pointer, the right one draws the current
+tile and the middle one erases a tile.
+
+draw the map starting from (0, 0) and make it a rectangle one as otherwise
+the save/export mechanism will fail.
+
+when the map window is active and a tile is selected you can press the
+following keys to achieve some nice things (all go into map tile property
+data in cgb format):
+
+key
+1-8  - change the tile palette.
+ x   - x flip the tile.
+ y   - y flip the tile.
+
+also the following keys work under map window:
+
+ p           - draw the current tile (mouse button three)
+ o           - erase the current tile (mouse button two)
+cursor left  - move to the block on the left
+cursor right - move to the block on the right
+cursor up    - move to the block above
+cursow down  - move to the block below
+
+
+about color modes...
+
+there are three color modes in ppm. you can choose your pick in the
+palette window. here are the explanations:
+
+pc           - 15bit colors from your video card.
+cgb rusty    - cgb color emulation mode using rusty wagner's formula.
+cgb jedediah - cgb color emulation mode using jedediah smith's formula.
+
+if you are serious about drawing graphics for the gameboy color, you
+should choose one of the two cgb color emulation modes as they do their
+best to show cgb colors on your pc monitor.
+
+
+about the palettes...
+
+here's how the palettes are arranged in the palette window:
+
+ 0  4
+ 1  5
+ 2  6
+ 3  7
+
+the colors from left to right are 0, 1, 2 and 3.
+
+
+about the preferences file...
+
+all sorts of information including window positions, zoom modes,
+palettes, etc. are saved to ~/.ppm/config -file when you select
+prefs->save found under ppm memory window. the prefs file is in
+text format and is quite readable, i guess.
+
+under windows the prefs file is called "ppmconfig" and it's placed
+into the current working directory.
+
+
+about importing gmb files...
+
+notice that when you import gmb files the tileset doesn't get loaded.
+you'll have to import it as well and manually. when you import a
+gmb file make sure your tile view size equals to the gmb file's tile
+size as it's not saved in the gmb file.
+
+
+about exporting map data...
+
+you can export all data in raw binary, gbdk .c, wla .asm, isas .asm,
+tasm .asm or rgbds .asm formats. tile property data is 100% colour
+gameboy compatible (supports up to 512 distinct tiles, eight palettes
+and x and y flipping). note that if you choose to export metatiles,
+tile property data will hold metatile data, and map data indexes
+to metatile data.
+
+you can export plain tile index data, fixed metatile map (F), dynamic
+metatile map (D) or metatile library map (L). fixed means that
+16x16 tiles in tile memory are used as metatiles, so you
+can't use x/y flipping and different palettes. dynamic export
+creates as many metatiles as there are different 16x16 blocks on
+the map. metatile library exporting means that the map data is
+exported using the metatiles you have in your metatile editor
+window. if there are more metatiles in the map than you have
+previously defined using the editor, the export function will fail.
+
+remember to export the tile data in 8x8 blocks if you want to use
+the tile data with your metatile maps. Here's explained the
+metatile property format:
+
+  ab
+  cd
+
+- a, b, c and d are 8x8 tiles.
+- every eight (or 12, if tile indexes are words) bytes describe
+  a metatile:
+
+.db a, b, c, d      ;indexes to 8x8 tiles
+.db pa, pb, pc, pd  ;colour gameboy tile properties
+
+when you export gbdk .c files the arrays get named after the file
+names. ppm also adds an extension to the array name depending on
+the data type. here's what you get:
+
+data type:                 array name:
+map data                   *_md
+map property data          *_mpd
+metatile map data          *_mmd
+metatile map property data *_mmpd
+
+where '*' is the file name without the suffix (eg. when file name is
+"merman.bin" '*' becomes "merman").
+
+
+about exporting tile data...
+
+you can export all data in raw binary, gbdk .c, wla .asm, isas .asm,
+tasm .asm or rgbds .asm formats. palettes can be exported in 16bit or
+24bit rgb formats. tile data can be exported in 2bit planar (low
+byte first, gameboy (color) compatible) or 8bit chunky (one byte
+is one pixel and can have a value from 0 to 15).
+
+when you export gbdk .c files the arrays get named after the file
+names. ppm also adds an extension to the array name depending on
+the data type. here's what you get:
+
+data type:          array name:
+tile data           *_td
+tile palette data   *_tpd
+palette data        *_pd
+
+where '*' is the file name without the suffix (eg. when file name is
+"merman.bin" '*' becomes "merman").
+
+24bit palette format is where you'll get one byte per one color
+component (0-31). 16bit palette format gives you two bytes per color
+and is colour gameboy compatible. here's the 16bit format explained:
+
+lo byte  hi byte
+gggrrrrr 0bbbbbgg
+
+you can also select the tile size and end x and y for the data. this
+is the order in which the 8x8 core tiles (and tile palette data as
+well) are exported. one character illustrates one 8x8 core tile.
+
+8x8:
+
+12345...x
+6789a
+.
+.
+.
+y
+
+8x16:
+
+13579...x
+2468a
+bdf
+ce
+.
+.
+.
+y
+
+16x16 H:
+
+12569a..x
+3478bc
+de
+fg
+.
+.
+.
+y
+
+16x16 V:
+
+1357...x
+2468
+9bdf
+ace
+.
+.
+.
+y
+
+
+about few general things...
+
+here's explained the colour gameboy tile property byte:
+
+ bit 76543210
+     dvhxbppp
+
+  x  not used
+  d  display priority
+  v  vertical flip
+  h  horizontal flip
+  b  character bank
+  p  palette (0-7)
+
+and here are explained the 2bit planar interleaved and non
+interleaved tile data formats:
+
+   tile:
+
+  .33333..
+  22...22.
+  11...11.
+  2222222. <-- digits
+  33...33.     represent
+  22...22.     color
+  11...11.     numbers
+  ........
+
+interleaved (gameboy) output:
+
+.db $7c, $7c, $00, $c6, $c6, $00, $00, $fe, $c6, $c6, $00,
+    $c6, $c6, $00, $00, $00
+
+non interleaved (eg. nes) output:
+
+.db $7c, $00, $c6, $00, $c6, $00, $c6, $00 ; first plane 0.
+.db $7c, $c6, $00, $fe, $c6, $c6, $00, $00 ; then plane 1.
+
+
+about the versions...
+
+v2.7 (18-Oct-2003)
+- tile memory can now be saved as a png.
+
+v2.6 (26-Nov-2002)
+- tile data exporter was broken.
+- removed all window related set_widget_set_usize()-calls.
+  this was because with some gtk skins the window sizes
+  were too small.
+- cleaned up the code.
+- enhanced documents.
+
+v2.5 (03-Jun-2001)
+- map scrolling is now done in 16 pixel increments.
+- added two new buttons to rotate square tile data
+  90 degrees left and right.
+- added metatile editor window.
+- removed window repositionings in startup. let the
+  window manager to remember the positions.
+- it's now possible to draw the map using metatiles.
+- added metatiles to project profile.
+- added metatile map exporting using metatile library
+  created with the metatile editor.
+- added 2bit planar non interleaved mode to tile data
+  exporting.
+
+v2.4 (26-May-2001)
+- added 16x16 pixel metatile (dynamic and fixed) map exporting.
+- added whole project (map and tile memory) clearing, loading
+  and saving.
+- shift key could look like it was jammed down in tile
+  editor window with some really bad luck.
+- clicking the "adjust to tile size" check button could
+  cause reverse effect with some really bad luck.
+- enhanced makefile.
+- removed 32x32 tile export mode, and added 16x16 h (horizontal)
+  and 16x16 v (vertical) tile export modes.
+- source file map exporting writes one line of data for
+  one line of map (used to write the data in 8 byte chunks).
+- byte writer could exceed byte limits (more tiles than 512).
+- enhanced file requester texts.
+- map exporting handles now word tile indexes right.
+- word tile index writer writes out bytes (two bytes for one index).
+
+v2.3 (19-Dec-2000)
+- code cleanups.
+- gbdk export lacked a comment terminator in the file header.
+- a map of tile memory can now be easily created from menu.
+- only memory and edit windows' window manager's close buttons
+  will terminate the program.
+- added gbm (game boy map builder files) import.
+- tile index size can now be selected from 8bit and 16bit in
+  map data export window.
+- export window's close and export buttons are now positioned
+  correctly.
+- added tile index offset spin button to the map export window.
+
+v2.2 (20-Nov-2000)
+- code cleanups.
+- memory window has now all the same editing related keyboard
+  shortcuts as the edit window.
+- you can draw and erase tiles with keys under map window.
+- undo didn't remember tile position or size in memory.
+- copy didn't remember tile size in memory.
+- tile flips and shifts didn't leave undo data.
+- adjusted tile edit and memory window sizes.
+- 8x16 mode was broken in the previous release.
+
+v2.1 (19-Nov-2000)
+- code cleanups.
+- refreshing the draw areas is now done correctly.
+- added windows code by ben campbell.
+- map wasn't redrawn when the map window was opened.
+- swapped right and middle mouse buttons' functions in map
+  editing for people with a two button mouse.
+
+v2.0 (18-Nov-2000)
+- optimized tile editor draw area updating.
+- optimized memory window draw area updating.
+- optimized tile fliping and shifting.
+- added map editor window.
+- added four memory models (4KB, 8KB, 12KB and 16KB).
+- added palette reverse buttons to palette editor window.
+- tile data can now be exported as 8bit chunky.
+- tile editor window buttons cannot be focused anymore.
+- made the memory, tile editor and tiled windows more compact.
+- changed undo shortcut in tile editor window to control-z.
+- palette copying copied the filtered colours.
+
+v1.8 (06-Nov-2000)
+- added more information to sourcecode exports.
+- file loading didn't update palettes.
+- added gbr (game boy tile designer files) import.
+
+v1.7 (05-Nov-2000)
+- fixed few typos in the export window.
+- added tasm .asm and isas .asm to export file formats.
+- added more information to window titles.
+- added 8x16 tile size.
+- memory window title is now always up to date.
+
+v1.6 (04-Nov-2000)
+- added 2:1 cgb zooms to tile and memory window. these
+  modes try to emulate the cgb display a little.
+- gbdk .c export now names the arrays after the file
+  names.
+
+v1.5 (03-Nov-2000)
+- palette mode selection skipped the first selection
+  if no preferences were loaded.
+- tile palette data exporting didn't obey the selected format.
+- added gbdk .c to export file formats.
+- all sourcecode exports write the data in hexadecimal format,
+  and output headers containing information about the data.
+
+v1.4 (31-Oct-2000)
+- added flood fill (hold shift down).
+- added yet another cgb color emulation mode (jedediah).
+
+v1.3 (29-Oct-2000)
+- added interpolate buttons to palette edit window.
+- fixed palette modes to cgb and pc (preference loading
+  might not work with old settings).
+- added cgb color emulation (rusty).
+
+v1.2 (28-Oct-2000)
+- added wla .asm and rgbds .asm to export file formats.
+- added 16bit palette export mode.
+- added copy and paste buttons to palette edit window.
+
+v1.1 (26-Oct-2000)
+- optimized drawing.
+- changed few "button_press_event"s to "clicked" events
+  to make the buttons work better.
+- made the export window more compact.
+- in export window end x and end y limits are updated as the
+  user selects the export tile size.
+- reversed the default palette and changed the initial drawing colors.
+
+v1.0 (25-Oct-2000)
+- initial release.
+
+
+about the helping hands...
+
+thanks to chyrpis for usable ideas, tailgunner/rrr for tar tea and
+rusty wagner and jedediah smith for the cgb color emulation formulas.
+thanks go also to aleksi eeben for good ideas, tips and general help and
+windows-thanks go to ben campbell for windows related help and code.
+thank you mattias wadman and joshua neal for bug reporting!
+
+
+about the rights...
+
+ppm is written under gpl license. please read license file coming with
+the source code for more information.
+
+i take no responsibility of what ppm might cause. earthquakes, massive
+explosions, computers refusing to co-operate, armies of rats and snakes
+killing people, anything just because you ran ppm. it's your fault.
+
+
+about compiling...
+
+if you can't compile ppm, first try to define CC and LD enviroment
+variables for makefile:
+
+export LD=gcc
+export CC=gcc
+
+some installations default to LD=ld and CC=cc...
+
+if it still fails, well, contact me. ;)
+
+
+about the author...
+
+hi! i'm ville helin. i'm using linux and studying information technology
+at the helsinki university of technology here in cold and gray finland.
+i've also written wla dx - the yet another gb-z80/z80/6502/6510/65816/
+huc-6280/spc-700 macro assembler package and wzonka-lad - the yet another
+game boy emulator for amiga computers.
+
+sorry for the english. i guess that tile export part is quite hard
+to understand. ;)
+
+email: vhelin@cc.hut.fi
+hpage: http://www.hut.fi/~vhelin
+ppm:   http://www.hut.fi/~vhelin/ppm.html
+wla:   http://www.hut.fi/~vhelin/wla.html
+
+Ville Helin
+Dagmarinkatu 8 c 38
+00100 Helsinki
+FINLAND
+
+
+about reading the code...
+
+good luck! it's quite rubbish, i must say. ;)

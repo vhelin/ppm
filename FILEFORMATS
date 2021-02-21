@@ -1,0 +1,46 @@
+
+ project-file:
+ *************
+
+ bytes
+
+   4      header, currently "PPMR".
+   x      x-1 bytes of tile-file name, 0 terminated.
+   y      y-1 bytes of map-file name, 0 terminated.
+   z      z-1 bytes of metatile library-file name, 0 terminated.
+
+
+ tile-file:
+ **********
+
+ bytes
+
+   4      header, currently "PPM0".
+ 8*4*3    eight palettes of four colors, each consisting of R, G and B.
+ 32*32    tile palette data.
+256*256   tile data in chunky pixel format.
+
+
+ map-file:
+ *********
+
+ bytes
+
+   4      header, currently "MEL0".
+   4      map x.
+   4      map y.
+ x*y*2    tile id.
+  x*y     tile property bytes.
+
+
+ metatile-file:
+ **************
+
+ bytes
+
+   4      header, currently "PPMM".
+   4      amount of metatiles.
+  ...
+   4      t1, t2, t3 and t4.
+   4      p1, p2, p3 and p4.
+  ...

@@ -1,0 +1,7 @@
+todo list:
+
+- tile optimizers
+- libpng input for tile data
+- zlib i/o
+- tile writing should write memory size worth of bytes
+- metatile displaying in 'tiled window'
