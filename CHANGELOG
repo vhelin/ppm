@@ -1,0 +1,141 @@
+
+v2.7 (18-Oct-2003)
+- tile memory can now be saved as a png.
+
+v2.6 (26-Nov-2002)
+- tile data exporter was broken.
+- removed all window related set_widget_set_usize()-calls.
+  this was because with some gtk skins the window sizes
+  were too small.
+- cleaned up the code.
+- enhanced documents.
+
+v2.5 (03-Jun-2001)
+- map scrolling is now done in 16 pixel increments.
+- added two new buttons to rotate square tile data
+  90 degrees left and right.
+- added metatile editor window.
+- removed window repositionings in startup. let the
+  window manager to remember the positions.
+- it's now possible to draw the map using metatiles.
+- added metatiles to project profile.
+- added metatile map exporting using metatile library
+  created with the metatile editor.
+- added 2bit planar non interleaved mode to tile data
+  exporting.
+
+v2.4 (26-May-2001)
+- added 16x16 pixel metatile (dynamic and fixed) map exporting.
+- added whole project (map and tile memory) clearing, loading
+  and saving.
+- shift key could look like it was jammed down in tile
+  editor window with some really bad luck.
+- clicking the "adjust to tile size" check button could
+  cause reverse effect with some really bad luck.
+- enhanced makefile.
+- removed 32x32 tile export mode, and added 16x16 h (horizontal)
+  and 16x16 v (vertical) tile export modes.
+- source file map exporting writes one line of data for
+  one line of map (used to write the data in 8 byte chunks).
+- byte writer could exceed byte limits (more tiles than 512).
+- enhanced file requester texts.
+- map exporting handles now word tile indexes right.
+- word tile index writer writes out bytes (two bytes for one index).
+
+v2.3 (19-Dec-2000)
+- code cleanups.
+- gbdk export lacked a comment terminator in the file header.
+- a map of tile memory can now be easily created from menu.
+- only memory and edit windows' window manager's close buttons
+  will terminate the program.
+- added gbm (game boy map builder files) import.
+- tile index size can now be selected from 8bit and 16bit in
+  map data export window.
+- export window's close and export buttons are now positioned
+  correctly.
+- added tile index offset spin button to the map export window.
+
+v2.2 (20-Nov-2000)
+- code cleanups.
+- memory window has now all the same editing related keyboard
+  shortcuts as the edit window.
+- you can draw and erase tiles with keys under map window.
+- undo didn't remember tile position or size in memory.
+- copy didn't remember tile size in memory.
+- tile flips and shifts didn't leave undo data.
+- adjusted tile edit and memory window sizes.
+- 8x16 mode was broken in the previous release.
+
+v2.1 (19-Nov-2000)
+- code cleanups.
+- refreshing the draw areas is now done correctly.
+- added windows code by ben campbell.
+- map wasn't redrawn when the map window was opened.
+- swapped right and middle mouse buttons' functions in map
+  editing for people with a two button mouse.
+
+v2.0 (18-Nov-2000)
+- optimized tile editor draw area updating.
+- optimized memory window draw area updating.
+- optimized tile fliping and shifting.
+- added map editor window.
+- added four memory models (4KB, 8KB, 12KB and 16KB).
+- added palette reverse buttons to palette editor window.
+- tile data can now be exported as 8bit chunky.
+- tile editor window buttons cannot be focused anymore.
+- made the memory, tile editor and tiled windows more compact.
+- changed undo shortcut in tile editor window to control-z.
+- palette copying copied the filtered colours.
+
+v1.8 (06-Nov-2000)
+- added more information to sourcecode exports.
+- file loading didn't update palettes.
+- added gbr (game boy tile designer files) import.
+
+v1.7 (05-Nov-2000)
+- fixed few typos in the export window.
+- added tasm .asm and isas .asm to export file formats.
+- added more information to window titles.
+- added 8x16 tile size.
+- memory window title is now always up to date.
+
+v1.6 (04-Nov-2000)
+- added 2:1 cgb zooms to tile and memory window. these
+  modes try to emulate the cgb display a little.
+- gbdk .c export now names the arrays after the file
+  names.
+
+v1.5 (03-Nov-2000)
+- palette mode selection skipped the first selection
+  if no preferences were loaded.
+- tile palette data exporting didn't obey the selected format.
+- added gbdk .c to export file formats.
+- all sourcecode exports write the data in hexadecimal format,
+  and output headers containing information about the data.
+
+v1.4 (31-Oct-2000)
+- added flood fill (hold shift down).
+- added yet another cgb color emulation mode (jedediah).
+
+v1.3 (29-Oct-2000)
+- added interpolate buttons to palette edit window.
+- fixed palette modes to cgb and pc (preference loading
+  might not work with old settings).
+- added cgb color emulation (rusty).
+
+v1.2 (28-Oct-2000)
+- added wla .asm and rgbds .asm to export file formats.
+- added 16bit palette export mode.
+- added copy and paste buttons to palette edit window.
+
+v1.1 (26-Oct-2000)
+- optimized drawing.
+- changed few "button_press_event"s to "clicked" events
+  to make the buttons work better.
+- made the export window more compact.
+- in export window end x and end y limits are updated as the
+  user selects the export tile size.
+- reversed the default palette and changed the initial drawing colors.
+
+v1.0 (25-Oct-2000)
+- initial release.
