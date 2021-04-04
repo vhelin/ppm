@@ -11,14 +11,14 @@
 #include <gtk/gtkwidget.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "defines.h"
-#include "main.h"
-#include "draw.h"
-#include "mouse.h"
-#include "color.h"
-#include "refresh.h"
-#include "map.h"
-#include "edit.h"
+#include "include/defines.h"
+#include "include/main.h"
+#include "include/draw.h"
+#include "include/mouse.h"
+#include "include/color.h"
+#include "include/refresh.h"
+#include "include/map.h"
+#include "include/edit.h"
 
 
 extern guchar palette_buffer_1[PBX * PBY * 3], palette_buffer_2[PBX * PBY * 3], palette_buffer_3[PBX * PBY * 3], palette_buffer_4[PBX * PBY * 3];

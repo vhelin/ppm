@@ -11,13 +11,13 @@
 #include <gtk/gtkwidget.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "defines.h"
-#include "main.h"
-#include "draw.h"
-#include "color.h"
-#include "file.h"
-#include "map.h"
-#include "png.h"
+#include "include/defines.h"
+#include "include/main.h"
+#include "include/draw.h"
+#include "include/color.h"
+#include "include/file.h"
+#include "include/map.h"
+#include "include/png.h"
 
 
 extern unsigned char memory_data[8 * 8 * 1024];

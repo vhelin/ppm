@@ -11,13 +11,12 @@
 #include <gtk/gtkwidget.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "defines.h"
-
-#include "draw.h"
-#include "main.h"
-#include "meta.h"
-#include "export.h"
-#include "refresh.h"
+#include "include/defines.h"
+#include "include/draw.h"
+#include "include/main.h"
+#include "include/meta.h"
+#include "include/export.h"
+#include "include/refresh.h"
 
 
 extern GtkWidget *meta_cb_x1, *meta_cb_x2, *meta_cb_x3, *meta_cb_x4, *meta_cb_y1, *meta_cb_y2, *meta_cb_y3, *meta_cb_y4;

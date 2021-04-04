@@ -11,16 +11,16 @@
 #include <gtk/gtkwidget.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "defines.h"
-#include "main.h"
-#include "prefs.h"
-#include "draw.h"
-#include "color.h"
-#include "refresh.h"
-#include "map.h"
-#include "mouse.h"
-#include "export.h"
-#include "meta.h"
+#include "include/defines.h"
+#include "include/main.h"
+#include "include/prefs.h"
+#include "include/draw.h"
+#include "include/color.h"
+#include "include/refresh.h"
+#include "include/map.h"
+#include "include/mouse.h"
+#include "include/export.h"
+#include "include/meta.h"
 
 
 extern struct metatile_16x16 *mt_first, *mt_last;

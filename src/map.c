@@ -11,11 +11,11 @@
 #include <gtk/gtkwidget.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "defines.h"
-#include "refresh.h"
-#include "map.h"
-#include "main.h"
-#include "draw.h"
+#include "include/defines.h"
+#include "include/refresh.h"
+#include "include/map.h"
+#include "include/main.h"
+#include "include/draw.h"
 
 
 extern GtkAdjustment *map_adj1, *map_adj2;

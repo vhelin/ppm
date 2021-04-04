@@ -11,14 +11,14 @@
 #include <gtk/gtkwidget.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "defines.h"
-#include "main.h"
-#include "draw.h"
-#include "color.h"
-#include "file.h"
-#include "import.h"
-#include "map.h"
-#include "refresh.h"
+#include "include/defines.h"
+#include "include/main.h"
+#include "include/draw.h"
+#include "include/color.h"
+#include "include/file.h"
+#include "include/import.h"
+#include "include/map.h"
+#include "include/refresh.h"
 
 
 extern unsigned char palette_colors_real[3 * 4 * 8];

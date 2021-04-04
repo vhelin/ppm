@@ -11,10 +11,10 @@
 #include <gtk/gtkwidget.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "defines.h"
-#include "main.h"
-#include "draw.h"
-#include "edit.h"
+#include "include/defines.h"
+#include "include/main.h"
+#include "include/draw.h"
+#include "include/edit.h"
 
 
 extern unsigned char copy_data_buffer[32 * 32], copy_palette_buffer[4 * 4];

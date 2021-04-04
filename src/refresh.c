@@ -11,9 +11,8 @@
 #include <gtk/gtkwidget.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "refresh.h"
-#include "defines.h"
-
+#include "include/refresh.h"
+#include "include/defines.h"
 
 extern guchar rgb_buffer[EDIT_WIDTH * EDIT_HEIGHT * 3];
 extern guchar memory_buffer[512 * 512 * 3];
