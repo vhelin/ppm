@@ -7,7 +7,10 @@ nico kugler ported this to cmake and gtk 2!
 that was v2.7 back in the day. in 2021 this project moved
 to github, and the development continues there...
 
+building...
 
+to compile the executable, run make, to install the binary, run make install. 
+you can override the installation dir by setting the PREFIX variable in your environment
 
 about the name...
 

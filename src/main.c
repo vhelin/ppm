@@ -29,22 +29,22 @@
 #include <gdk/gdkkeysyms.h>
 #include <glib/gtypes.h>
 
-#include "defines.h"
-#include "main.h"
-#include "prefs.h"
-#include "draw.h"
-#include "mouse.h"
-#include "edit.h"
-#include "memory.h"
-#include "button.h"
-#include "color.h"
-#include "file.h"
-#include "export.h"
-#include "import.h"
-#include "refresh.h"
-#include "map.h"
-#include "project.h"
-#include "meta.h"
+#include "include/defines.h"
+#include "include/main.h"
+#include "include/prefs.h"
+#include "include/draw.h"
+#include "include/mouse.h"
+#include "include/edit.h"
+#include "include/memory.h"
+#include "include/button.h"
+#include "include/color.h"
+#include "include/file.h"
+#include "include/export.h"
+#include "include/import.h"
+#include "include/refresh.h"
+#include "include/map.h"
+#include "include/project.h"
+#include "include/meta.h"
 
 
 guchar rgb_buffer[EDIT_WIDTH * EDIT_HEIGHT * 3];

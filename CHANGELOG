@@ -1,3 +1,9 @@
+v2.8.0
+- Restructured the project to clean up the project root
+- Fixed a missing `extern` which was causing compilation to fail
+- Replaced CMake with Make
+- Moved new build info to README
+- Added gitignore to keep unwanted files out of the tree
 
 v2.7 (18-Oct-2003)
 - tile memory can now be saved as a png.

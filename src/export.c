@@ -11,13 +11,13 @@
 #include <gtk/gtkwidget.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "defines.h"
-#include "main.h"
-#include "draw.h"
-#include "color.h"
-#include "file.h"
-#include "export.h"
-#include "meta.h"
+#include "include/defines.h"
+#include "include/main.h"
+#include "include/draw.h"
+#include "include/color.h"
+#include "include/file.h"
+#include "include/export.h"
+#include "include/meta.h"
 
 
 extern unsigned char memory_data[8 * 8 * 1024]; /* one byte / pixel */
@@ -38,7 +38,8 @@ extern unsigned char *map_property_data;
 extern unsigned int *map_data, map_export_format_format, map_export_format_size;
 
 static unsigned int export_counter, export_counter_max;
-unsigned int export_selection_status, end_x, end_y, tile, export_size, edit_size_x, edit_size_y;
+unsigned int export_selection_status, end_x, end_y, tile, export_size;
+extern unsigned int edit_size_x, edit_size_y;
 unsigned int map_export_selection_status, map_end_x, map_end_y, eff;
 int tile_offset, map_mode;
 

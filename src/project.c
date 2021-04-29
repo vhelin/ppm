@@ -11,14 +11,14 @@
 #include <gtk/gtkwidget.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "defines.h"
-#include "memory.h"
-#include "file.h"
-#include "color.h"
-#include "draw.h"
-#include "project.h"
-#include "map.h"
-#include "meta.h"
+#include "include/defines.h"
+#include "include/memory.h"
+#include "include/file.h"
+#include "include/color.h"
+#include "include/draw.h"
+#include "include/project.h"
+#include "include/map.h"
+#include "include/meta.h"
 
 
 extern GtkWidget *file_selection_project_open, *file_selection_project_save_as;

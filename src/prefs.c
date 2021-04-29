@@ -11,7 +11,7 @@
 #include <gtk/gtkwidget.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "defines.h"
+#include "include/defines.h"
 
 
 extern unsigned char palette_colors[3 * 4 * 8];
